@@ -8,3 +8,10 @@ img {
   height: 90px;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  img {
+    width: 65px;
+    height: 65px;
+  }
+}
