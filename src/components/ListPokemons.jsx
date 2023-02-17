@@ -180,7 +180,7 @@ export const ListPokemons = () => {
       {listPokemons.length > 0 && listPokemonsTwo.length > 0 && (
         <>
 
-          {checkFounded() / 2 === 1 ? (playAudioWinner()) : <Timer timeout={() => blockList()} />}
+          {checkFounded() / 2 === 15 ? (playAudioWinner()) : <Timer timeout={() => blockList()} />}
 
           <h3>
             Parejas encontradas: {checkFounded() > 0 ? checkFounded() / 2 : 0}
