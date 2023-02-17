@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import './styles/Timer.css'
 
 export const Timer = ({timeout}) => {
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(100);
   const intervalRef = useRef(); // usamos ref para guardar el intervalo y despues usamos ese ref para frenar el interval
 
   useEffect(() => {
