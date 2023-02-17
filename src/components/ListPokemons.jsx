@@ -189,7 +189,7 @@ export const ListPokemons = () => {
           <table className="center">
             <tbody>
               <tr>
-                {listPokemons.slice(0, 5).map((p, index) => {
+                {listPokemons.slice(0, 4).map((p) => {
                   return (
                     <td key={p.id}>
                       {p.show === false && p.found === false && (
@@ -208,9 +208,7 @@ export const ListPokemons = () => {
                     </td>
                   );
                 })}
-              </tr>
-              <tr>
-                {listPokemonsTwo.slice(5, 10).map((p, index) => {
+                {listPokemonsTwo.slice(5, 6).map((p) => {
                   return (
                     <td key={p.id}>
                       {p.show === false && p.found === false && (
@@ -231,7 +229,107 @@ export const ListPokemons = () => {
                 })}
               </tr>
               <tr>
-                {listPokemonsTwo.slice(0, 5).map((p, index) => {
+                {listPokemonsTwo.slice(6, 10).map((p) => {
+                  return (
+                    <td key={p.id}>
+                      {p.show === false && p.found === false && (
+                        <img
+                          src={interrogation}
+                          alt="interrogation"
+                          onClick={() => showImage(p.id, 2)}
+                        />
+                      )}
+                      {p.show === true && p.found === false && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                      {p.show === false && p.found === true && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                    </td>
+                  );
+                })}
+                {listPokemons.slice(4, 5).map((p) => {
+                  return (
+                    <td key={p.id}>
+                      {p.show === false && p.found === false && (
+                        <img
+                          src={interrogation}
+                          alt="interrogation"
+                          onClick={() => showImage(p.id, 1)}
+                        />
+                      )}
+                      {p.show === true && p.found === false && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                      {p.show === false && p.found === true && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+              <tr>
+                {listPokemonsTwo.slice(0, 3).map((p) => {
+                  return (
+                    <td key={p.id}>
+                      {p.show === false && p.found === false && (
+                        <img
+                          src={interrogation}
+                          alt="interrogation"
+                          onClick={() => showImage(p.id, 2)}
+                        />
+                      )}
+                      {p.show === true && p.found === false && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                      {p.show === false && p.found === true && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                    </td>
+                  );
+                })}
+                {listPokemons.slice(10, 12).map((p) => {
+                  return (
+                    <td key={p.id}>
+                      {p.show === false && p.found === false && (
+                        <img
+                          src={interrogation}
+                          alt="interrogation"
+                          onClick={() => showImage(p.id, 1)}
+                        />
+                      )}
+                      {p.show === true && p.found === false && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                      {p.show === false && p.found === true && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+              {/* MITAD */}
+              <tr>
+                {listPokemons.slice(12, 15).map((p) => {
+                  return (
+                    <td key={p.id}>
+                      {p.show === false && p.found === false && (
+                        <img
+                          src={interrogation}
+                          alt="interrogation"
+                          onClick={() => showImage(p.id, 1)}
+                        />
+                      )}
+                      {p.show === true && p.found === false && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                      {p.show === false && p.found === true && (
+                        <img src={p.image} title={p.name} alt={p.name} />
+                      )}
+                    </td>
+                  );
+                })}
+                {listPokemonsTwo.slice(3, 5).map((p) => {
                   return (
                     <td key={p.id}>
                       {p.show === false && p.found === false && (
@@ -251,9 +349,8 @@ export const ListPokemons = () => {
                   );
                 })}
               </tr>
-              {/* Lista dos */}
               <tr>
-                {listPokemons.slice(10, 15).map((p, index) => {
+                {listPokemons.slice(5, 10).map((p) => {
                   return (
                     <td key={p.id}>
                       {p.show === false && p.found === false && (
@@ -274,28 +371,7 @@ export const ListPokemons = () => {
                 })}
               </tr>
               <tr>
-                {listPokemons.slice(5, 10).map((p, index) => {
-                  return (
-                    <td key={p.id}>
-                      {p.show === false && p.found === false && (
-                        <img
-                          src={interrogation}
-                          alt="interrogation"
-                          onClick={() => showImage(p.id, 1)}
-                        />
-                      )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-              <tr>
-                {listPokemonsTwo.slice(10, 15).map((p, index) => {
+                {listPokemonsTwo.slice(10, 15).map((p) => {
                   return (
                     <td key={p.id}>
                       {p.show === false && p.found === false && (
