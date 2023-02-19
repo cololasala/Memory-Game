@@ -9,6 +9,19 @@ img {
   cursor: pointer;
 }
 
+.win-container {
+  text-align: center;
+}
+
+.play-button {
+  padding: 8px;
+  color: white;
+  background-color: DodgerBlue;
+  border: 1px solid DodgerBlue;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
   img {
     width: 65px;

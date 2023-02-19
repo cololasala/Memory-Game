@@ -155,25 +155,29 @@ export const ListPokemons = () => {
   };
 
   const blockList = () => {
-    playAudioLoser();
-    alert(
-      "Tu tiempo se acabo, volve a intentarlo!"
-    );
+    loserAudio.play();
+    alert("Tu tiempo se acabo, volve a intentarlo!");
+    resetGame();
+  };
+
+  const resetGame = () => {
     setTimeout(() => {
       setListPokemons([]);
       setListPokemonsTwo([]);
       initData();
     });
-  };
+  }
 
-  const playAudioLoser = () => {
-    loserAudio.play();
-  };
 
   const playAudioWinner = () => {
     winnerAudio.play();
-    return <h1>Ganaste!, bien ahi guachin :D</h1>
-  }
+    return (
+      <div className="win-container">
+        <h1>Ganaste!, bien ahi guachin :D</h1>
+        <button className="play-button" onClick={() => resetGame()}>Volver a jugar</button>
+      </div>
+    );
+  };
 
   return (
     <>
