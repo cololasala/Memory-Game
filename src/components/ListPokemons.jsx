@@ -27,7 +27,7 @@ export const ListPokemons = () => {
             id: data.id,
             name: data.name,
             image: data.sprites.front_default,
-            show: false,
+            isShowing: false,
             found: false,
           },
         ]);
@@ -40,7 +40,7 @@ export const ListPokemons = () => {
             id: data.id,
             name: data.name,
             image: data.sprites.front_default,
-            show: false,
+            isShowing: false,
             found: false,
           },
         ]);
@@ -59,7 +59,7 @@ export const ListPokemons = () => {
         setListPokemons(
           listPokemons.map((p) => {
             if (p.id === id) {
-              return { ...p, show: true };
+              return { ...p, isShowing: true };
             } else {
               return p;
             }
@@ -69,7 +69,7 @@ export const ListPokemons = () => {
         setListPokemonsTwo(
           listPokemonsTwo.map((p) => {
             if (p.id === id) {
-              return { ...p, show: true };
+              return { ...p, isShowing: true };
             } else {
               return p;
             }
@@ -85,8 +85,8 @@ export const ListPokemons = () => {
         setTimeout(() => {
           setListPokemons(
             listPokemons.map((p) => {
-              if (p.show) {
-                return { ...p, show: false, found: true };
+              if (p.isShowing) {
+                return { ...p, isShowing: false, found: true };
               } else {
                 return p;
               }
@@ -94,8 +94,8 @@ export const ListPokemons = () => {
           );
           setListPokemonsTwo(
             listPokemonsTwo.map((p) => {
-              if (p.show) {
-                return { ...p, show: false, found: true };
+              if (p.isShowing) {
+                return { ...p, isShowing: false, found: true };
               } else {
                 return p;
               }
@@ -106,8 +106,8 @@ export const ListPokemons = () => {
         setTimeout(() => {
           setListPokemons(
             listPokemons.map((p) => {
-              if (p.show) {
-                return { ...p, show: false, found: false };
+              if (p.isShowing) {
+                return { ...p, isShowing: false, found: false };
               } else {
                 return p;
               }
@@ -115,8 +115,8 @@ export const ListPokemons = () => {
           );
           setListPokemonsTwo(
             listPokemonsTwo.map((p) => {
-              if (p.show) {
-                return { ...p, show: false, found: false };
+              if (p.isShowing) {
+                return { ...p, isShowing: false, found: false };
               } else {
                 return p;
               }
@@ -130,20 +130,20 @@ export const ListPokemons = () => {
   const checkCoincidence = () => {
     /* Solo chequeo si tengo seleccionado uno de cada lista, ya que nunca tendre 2 pokemones repetidos en la misma lista */
     if (
-      listPokemons.some((p) => p.show === true) &&
-      listPokemonsTwo.some((p) => p.show === true)
+      listPokemons.some((p) => p.isShowing) &&
+      listPokemonsTwo.some((p) => p.isShowing)
     ) {
       return (
-        listPokemons.filter((p) => p.show === true)[0].id ===
-        listPokemonsTwo.filter((p) => p.show === true)[0].id
+        listPokemons.filter((p) => p.isShowing)[0].id ===
+        listPokemonsTwo.filter((p) => p.isShowing)[0].id
       );
     }
   };
 
   const checkShowedImages = () => {
     return (
-      listPokemons.filter((p) => p.show).length +
-      listPokemonsTwo.filter((p) => p.show).length
+      listPokemons.filter((p) => p.isShowing).length +
+      listPokemonsTwo.filter((p) => p.isShowing).length
     );
   };
 
@@ -166,15 +166,16 @@ export const ListPokemons = () => {
       setListPokemonsTwo([]);
       initData();
     });
-  }
-
+  };
 
   const playAudioWinner = () => {
     winnerAudio.play();
     return (
       <div className="win-container">
         <h1>Ganaste!, bien ahi guachin :D</h1>
-        <button className="play-button" onClick={() => resetGame()}>Volver a jugar</button>
+        <button className="play-button" onClick={() => resetGame()}>
+          Volver a jugar
+        </button>
       </div>
     );
   };
@@ -183,8 +184,11 @@ export const ListPokemons = () => {
     <>
       {listPokemons.length > 0 && listPokemonsTwo.length > 0 && (
         <>
-
-          {checkFounded() / 2 === 15 ? (playAudioWinner()) : <Timer timeout={() => blockList()} />}
+          {checkFounded() / 2 === 15 ? (
+            playAudioWinner()
+          ) : (
+            <Timer timeout={() => blockList()} />
+          )}
 
           <h3>
             Parejas encontradas: {checkFounded() > 0 ? checkFounded() / 2 : 0}
@@ -196,17 +200,14 @@ export const ListPokemons = () => {
                 {listPokemons.slice(0, 4).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -215,17 +216,14 @@ export const ListPokemons = () => {
                 {listPokemonsTwo.slice(5, 6).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -236,17 +234,14 @@ export const ListPokemons = () => {
                 {listPokemonsTwo.slice(6, 10).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -255,17 +250,14 @@ export const ListPokemons = () => {
                 {listPokemons.slice(4, 5).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -276,17 +268,14 @@ export const ListPokemons = () => {
                 {listPokemonsTwo.slice(0, 3).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -295,17 +284,14 @@ export const ListPokemons = () => {
                 {listPokemons.slice(10, 12).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -317,17 +303,14 @@ export const ListPokemons = () => {
                 {listPokemons.slice(12, 15).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -336,17 +319,14 @@ export const ListPokemons = () => {
                 {listPokemonsTwo.slice(3, 5).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -357,17 +337,14 @@ export const ListPokemons = () => {
                 {listPokemons.slice(5, 10).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
@@ -378,17 +355,14 @@ export const ListPokemons = () => {
                 {listPokemonsTwo.slice(10, 15).map((p) => {
                   return (
                     <td key={p.id}>
-                      {p.show === false && p.found === false && (
+                      {p.isShowing === false && p.found === false && (
                         <img
                           src={interrogation}
                           alt="interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
-                      {p.show === true && p.found === false && (
-                        <img src={p.image} title={p.name} alt={p.name} />
-                      )}
-                      {p.show === false && p.found === true && (
+                      {((p.isShowing && p.found === false) || p.found) && (
                         <img src={p.image} title={p.name} alt={p.name} />
                       )}
                     </td>
