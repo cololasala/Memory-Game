@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/Memory-Game/static/css/main.6d44f279.css",
-    "main.js": "/Memory-Game/static/js/main.7494a53b.js",
+    "main.css": "/Memory-Game/static/css/main.67dee47b.css",
+    "main.js": "/Memory-Game/static/js/main.faf0f181.js",
+    "static/media/pokemon.jpg": "/Memory-Game/static/media/pokemon.fc72221f871283a25052.jpg",
     "static/media/winner.mp3": "/Memory-Game/static/media/winner.685008b786b5f36fce90.mp3",
     "static/media/interrogation.jpg": "/Memory-Game/static/media/interrogation.80f4cd64ba177327b16c.jpg",
     "static/media/loser.mp3": "/Memory-Game/static/media/loser.9a346ba5a391463cd45c.mp3",
     "index.html": "/Memory-Game/index.html",
-    "main.6d44f279.css.map": "/Memory-Game/static/css/main.6d44f279.css.map",
-    "main.7494a53b.js.map": "/Memory-Game/static/js/main.7494a53b.js.map"
+    "main.67dee47b.css.map": "/Memory-Game/static/css/main.67dee47b.css.map",
+    "main.faf0f181.js.map": "/Memory-Game/static/js/main.faf0f181.js.map"
   },
   "entrypoints": [
-    "static/css/main.6d44f279.css",
-    "static/js/main.7494a53b.js"
+    "static/css/main.67dee47b.css",
+    "static/js/main.faf0f181.js"
   ]
 }
