@@ -5,6 +5,8 @@ body {
   font-family: "Montserrat", sans-serif;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  background-image: url('./assets/images/pokemon.jpg');
+  background-size: cover;
 }
 
 footer {

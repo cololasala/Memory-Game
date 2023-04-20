@@ -9,6 +9,10 @@ img {
   cursor: pointer;
 }
 
+.img-interrogation {
+  mix-blend-mode: multiply;
+}
+
 .win-container {
   text-align: center;
 }

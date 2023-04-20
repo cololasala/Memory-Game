@@ -204,6 +204,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
@@ -220,6 +221,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
@@ -238,6 +240,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
@@ -254,6 +257,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
@@ -272,6 +276,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
@@ -288,6 +293,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
@@ -307,6 +313,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
@@ -323,6 +330,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
@@ -341,6 +349,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 1)}
                         />
                       )}
@@ -359,6 +368,7 @@ export const ListPokemons = () => {
                         <img
                           src={interrogation}
                           alt="interrogation"
+                          className="img-interrogation"
                           onClick={() => showImage(p.id, 2)}
                         />
                       )}
